@@ -1,3 +1,10 @@
+import { ContactModal } from '../ContextModal';
+
 export const App = () => {
-  return <>Hello world</>
-}
+  return (
+    <div>
+      <>Hello world</>
+      <ContactModal />
+    </div>
+  );
+};

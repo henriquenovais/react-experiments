@@ -9,6 +9,7 @@ test('initializes empty forms', async () => {
   const nameInput = screen.queryByPlaceholderText('Name');
   const phoneInput = screen.queryByPlaceholderText('Phone Number');
   const emailInput = screen.queryByPlaceholderText('Email Address');
+  const submitButton = screen.getByText('Submit');
 
   expect(nameInput).toBeInTheDocument();
   expect(phoneInput).toBeInTheDocument();
@@ -17,4 +18,8 @@ test('initializes empty forms', async () => {
   expect(nameInput).toHaveValue('');
   expect(phoneInput).toHaveValue('');
   expect(emailInput).toHaveValue('');
+
+  expect(submitButton).toBeDisabled();
 });
+
+test('Disable submit button until form is valid', async () => {});

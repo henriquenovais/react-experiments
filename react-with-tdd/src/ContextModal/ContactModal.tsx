@@ -7,7 +7,15 @@ export const ContactModal = (): JSX.Element => {
   const [email, setEmail] = useState('');
   const [isValid, setIsValid] = useState(false);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setIsValid(
+      !!name &&
+        !!phone &&
+        !!email &&
+        /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/.test(phone) &&
+        /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email), //^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$
+    );
+  }, [name, phone, email]);
 
   return (
     <div className={styles.main}>
@@ -33,7 +41,6 @@ export const ContactModal = (): JSX.Element => {
 
         <button disabled={!isValid}>Submit</button>
       </form>
-      I am the contact modal
     </div>
   );
 };

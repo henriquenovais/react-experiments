@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 
-export const ContactModal = (): JSX.Element => {
+export const ContactModal = (submit: any): JSX.Element => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -19,7 +19,7 @@ export const ContactModal = (): JSX.Element => {
 
   return (
     <div className={styles.main}>
-      <form>
+      <form onSubmit={() => {}}>
         <input
           required
           placeholder="Name"

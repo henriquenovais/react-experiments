@@ -5,6 +5,11 @@ export const ContactModal = (submit: any): JSX.Element => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+
+  const [nameError, setNameError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+  const [emailError, setEmailError] = useState('');
+
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
@@ -19,12 +24,22 @@ export const ContactModal = (submit: any): JSX.Element => {
 
   return (
     <div className={styles.main}>
-      <form onSubmit={() => {}}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (isValid) {
+            submit();
+          }
+        }}
+      >
         <input
           required
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          {...(nameError !== '' && (
+            <div className={styles.error}>{nameError}</div>
+          ))}
         />
         <input
           required

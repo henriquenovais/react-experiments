@@ -122,3 +122,78 @@ test('Disable submit button if inserted phone number is out of format', async ()
   //Assert
   expect(submitButton).toBeDisabled();
 });
+
+test('Displays error messages for invalid inputs', () => {
+  //Arrange
+  render(<ContactModal />);
+
+  const phoneInput = screen.queryByPlaceholderText('Phone Number');
+  const emailInput = screen.queryByPlaceholderText('Email Address');
+
+  //Act
+  if (phoneInput != null && emailInput != null) {
+    fireEvent.change(phoneInput, { target: { value: '123-456-7890' } });
+    fireEvent.change(emailInput, {
+      target: { value: 'portexeofficial' },
+    });
+  }
+
+  const phoneError = screen.getByText('Phone is improperly formatted');
+  const emailError = screen.getByText('Email is improperly formatted');
+
+  //Assert
+  expect(phoneError).toBeInTheDocument();
+  expect(emailError).toBeInTheDocument();
+});
+
+test('Displays error for invalid inputs', () => {
+  //Arrange
+  render(<ContactModal />);
+
+  const phoneInput = screen.queryByPlaceholderText('Phone Number');
+  const emailInput = screen.queryByPlaceholderText('Email Address');
+
+  //Act
+  if (phoneInput != null && emailInput != null) {
+    fireEvent.change(phoneInput, { target: { value: '123-456-7890' } });
+    fireEvent.change(emailInput, {
+      target: { value: 'portexeofficial' },
+    });
+  }
+
+  const emailError = screen.getByText('Email is improperly formatted');
+
+  if (emailInput != null) {
+    fireEvent.change(emailInput, {
+      target: { value: 'portexeofficial@gmail.com' },
+    });
+  }
+
+  //Assert
+  expect(emailError).not.toBeInTheDocument();
+});
+
+test('Displays error for invalid inputs haha', () => {
+  //Arrange
+  render(<ContactModal />);
+
+  const phoneInput = screen.queryByPlaceholderText('Phone Number');
+  const emailInput = screen.queryByPlaceholderText('Email Address');
+
+  //Act
+  if (phoneInput != null && emailInput != null) {
+    fireEvent.change(phoneInput, { target: { value: '123-456-7890' } });
+    fireEvent.change(emailInput, {
+      target: { value: 'portexeofficial' },
+    });
+  }
+
+  const phoneError = screen.getByText('Phone is improperly formatted');
+
+  if (phoneInput != null) {
+    fireEvent.change(phoneInput, { target: { value: '123-456-7890' } });
+  }
+
+  //Assert
+  expect(phoneError).not.toBeInTheDocument();
+});

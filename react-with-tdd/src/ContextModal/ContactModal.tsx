@@ -29,31 +29,38 @@ export const ContactModal = (submit: any): JSX.Element => {
           e.preventDefault();
           if (isValid) {
             submit();
+          } else {
           }
         }}
       >
-        <input
-          required
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          {...(nameError !== '' && (
-            <div className={styles.error}>{nameError}</div>
-          ))}
-        />
-        <input
-          required
-          placeholder="Phone Number"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
-        <input
-          required
-          placeholder="Email Address"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
+        <div>
+          <input
+            required
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          {!!nameError && <div className={styles.error}>{nameError}</div>}
+        </div>
+        <div>
+          {' '}
+          <input
+            required
+            placeholder="Phone Number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          {!!phoneError && <div className={styles.error}>{phoneError}</div>}
+        </div>
+        <div>
+          <input
+            required
+            placeholder="Email Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {!!emailError && <div className={styles.error}>{emailError}</div>}
+        </div>
         <button disabled={!isValid}>Submit</button>
       </form>
     </div>

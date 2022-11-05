@@ -132,7 +132,7 @@ test('Displays error messages for invalid inputs', () => {
 
   //Act
   if (phoneInput != null && emailInput != null) {
-    fireEvent.change(phoneInput, { target: { value: '123-456-7890' } });
+    fireEvent.change(phoneInput, { target: { value: '123-456-78' } });
     fireEvent.change(emailInput, {
       target: { value: 'portexeofficial' },
     });
@@ -182,9 +182,9 @@ test('Displays error for invalid inputs haha', () => {
 
   //Act
   if (phoneInput != null && emailInput != null) {
-    fireEvent.change(phoneInput, { target: { value: '123-456-7890' } });
+    fireEvent.change(phoneInput, { target: { value: '123-456-78' } });
     fireEvent.change(emailInput, {
-      target: { value: 'portexeofficial' },
+      target: { value: 'portexeofficial@gmail.com' },
     });
   }
 

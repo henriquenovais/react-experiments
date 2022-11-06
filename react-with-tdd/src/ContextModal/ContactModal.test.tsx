@@ -3,7 +3,7 @@ import { ContactModal } from './ContactModal';
 
 afterEach(cleanup);
 
-test('initializes empty forms', async () => {
+test('GIVEN form rendered WHEN do nothing THEN fields appear', async () => {
   //Arrange
   render(<ContactModal />);
   const nameInput = screen.queryByPlaceholderText('Name');
@@ -23,7 +23,7 @@ test('initializes empty forms', async () => {
   expect(submitButton).toBeDisabled();
 });
 
-test('Enable submit button until form is valid', async () => {
+test('GIVEN form rendered WHEN correct input into fields name, phone and e-mail THEN enable submit button', async () => {
   //Arrange
   render(<ContactModal />);
   const nameInput = screen.queryByPlaceholderText('Name');
@@ -50,7 +50,7 @@ test('Enable submit button until form is valid', async () => {
   expect(submitButton).toBeEnabled();
 });
 
-test('Disable submit button if inserted email is out of format', async () => {
+test('GIVEN form with correct format inputs WHEN incorrect e-mail input THEN disable submit button', async () => {
   //Arrange
   render(<ContactModal />);
   const nameInput = screen.queryByPlaceholderText('Name');
@@ -87,7 +87,7 @@ test('Disable submit button if inserted email is out of format', async () => {
   expect(submitButton).toBeDisabled();
 });
 
-test('Disable submit button if inserted phone number is out of format', async () => {
+test('GIVEN form with correct format inputs WHEN incorrect phone input THEN disable submit button', async () => {
   //Arrange
   render(<ContactModal />);
 
@@ -123,7 +123,7 @@ test('Disable submit button if inserted phone number is out of format', async ()
   expect(submitButton).toBeDisabled();
 });
 
-test('Displays error messages for invalid inputs', () => {
+test('GIVEN form rendered WHEN incorrect phone and email format input THEN display phone and email error', () => {
   //Arrange
   render(<ContactModal />);
 
@@ -146,7 +146,7 @@ test('Displays error messages for invalid inputs', () => {
   expect(emailError).toBeInTheDocument();
 });
 
-test('Displays error for invalid inputs', () => {
+test('GIVEN e-mail input wrong format phone input wrong format e-mail correct format input WHEN typed THEN wrong format email error disapear', () => {
   //Arrange
   render(<ContactModal />);
 
@@ -173,7 +173,7 @@ test('Displays error for invalid inputs', () => {
   expect(emailError).not.toBeInTheDocument();
 });
 
-test('Displays error for invalid inputs haha', () => {
+test('GIVEN e-mail input wrong format phone input wrong format phone correct format input WHEN typed THEN wrong format phone error disapear', () => {
   //Arrange
   render(<ContactModal />);
 
